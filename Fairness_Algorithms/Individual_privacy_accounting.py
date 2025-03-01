@@ -289,7 +289,7 @@ def Fairness_DPSGD_US_Accounting(start_time, train_data, test_data, model, optim
 
 
 if __name__ == '__main__':
-    orders =  list(range(2, 64)) + [128, 256, 512]
+    orders =  list(range(2, 512)) 
     datasets = ['CIFAR-10', 'MNIST', 'IMDB', 'FMNIST']
     momentum = 0.9
     input_norm = "BN"

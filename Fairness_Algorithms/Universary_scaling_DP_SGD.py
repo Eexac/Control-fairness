@@ -137,7 +137,7 @@ def Fairness_US_DPSGD(estimated_number, start_time, train_data, test_data, model
 
 
 if __name__ == '__main__':
-    orders = list(range(2, 64)) + [128, 256, 512]
+    orders = list(range(2, 512))
     # datasets  has four options 'CIFAR-10', 'MNIST', 'IMDB', 'FMNIST'
     training_order = 0  # 0 represent unfairness training first, 1 represent fairness training first
     #this is the example of CIFAR-10
