@@ -3,10 +3,6 @@
 
 ## Installation
 
-You can install all requirements with:
-```bash
-pip install -r requirements.txt
-```
 
 To reproduce the results of DPSGD-US, set the fairness parameter from {0, 0.5, 1, 1.5, 2}, training_order from {0,1} (0 corresponds to DPSGD-FS, and 1 corresponds to FS-DPSGD), one_shot from {0,1} and batch_size_fair from {8192, 19200}.
 
@@ -58,7 +54,7 @@ python main.py --algorithm DPSGD-FS --dataset_name IMDB --lr 0.5 --momentum 0.9 
 
 
 
-To reproduce the results of privacy accounting, use the example bash commands below:
+To reproduce the privacy accounting results, use the example Bash commands provided below. The Individual_privacy_accounting.py file is located in the Fairness_Algorithms directory.:
 ```bash
 python Individual_privacy_accounting.py
 ```
