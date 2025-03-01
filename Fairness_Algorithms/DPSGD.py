@@ -14,7 +14,7 @@ def DPSGD(train_data, test_data, model,optimizer, batch_size, epsilon_budget, de
     test_dl = torch.utils.data.DataLoader(
         test_data, batch_size=batch_size, shuffle=False)
 
-    orders = [1 + x / 10.0 for x in range(1, 100)] + list(range(11, 64))+ [128, 256, 512]
+    orders = list(range(2, 512))
     iter = 1
     epsilon = 0.
     best_test_acc=0.

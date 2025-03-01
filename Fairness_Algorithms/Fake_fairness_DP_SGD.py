@@ -166,7 +166,7 @@ def Fake_fairness_DPSGD(estimated_number, start_time, train_data, test_data, mod
 
 
 if __name__ == '__main__':
-    orders = [1 + x / 10.0 for x in range(1, 100)] + list(range(2, 64)) + [128, 256, 512]
+    orders = list(range(2, 64)) + [128, 256, 512]
     # datasets  has four options 'CIFAR-10', 'MNIST', 'IMDB', 'FMNIST'
     dataset = 'IMDB'
     sampling_ratio = 0
