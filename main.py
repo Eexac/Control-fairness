@@ -59,7 +59,7 @@ def main():
     batch_size_array = [batch_size, batch_size_fair]
     sample_ratio_unfairness = 0
     sample_ratio_fairness = 0
-    orders = list(range(2, 64)) + [128, 256, 512]
+    orders = list(range(2, 512))
     start_time = time.time()
     if dataset_name == 'IMDB' or dataset_name == 'CIFAR-10':
         sample_ratio_unfairness = batch_size / 50000
