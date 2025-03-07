@@ -289,7 +289,7 @@ def Fairness_DPSGD_US_Accounting(start_time, train_data, test_data, model, optim
 
 
 if __name__ == '__main__':
-    orders =  list(range(2, 512)) 
+    orders =  list(range(2, 512))
     datasets = ['CIFAR-10', 'MNIST', 'IMDB', 'FMNIST']
     momentum = 0.9
     input_norm = "BN"
@@ -297,13 +297,16 @@ if __name__ == '__main__':
     device_1 = 'cpu'
     batch_size = 19200
     delta = 0.00001
+    subset_size = 0
     for magnitude in [0.1, 1.5]:
         for data_iter in datasets:
             for Phi in [0.5, 1, 1.5, 2]:
                 if data_iter == 'IMDB' or data_iter == 'CIFAR-10':
                     sample_rat = 19200 / 50000
+                    subset_size = 50000
                     order = find_best_order(0, orders, 0.5, 3, 0.00001, 5.67, sample_rat, sample_rat)
                 else:
+                    subset_size = 60000
                     sample_rat = 19200 / 60000
                     order = find_best_order(0, orders, 0.5, 3, 0.00001, 5.67, sample_rat, sample_rat)
                 train_data, test_data, dataset = get_data(data_iter, augment=False)
@@ -323,7 +326,7 @@ if __name__ == '__main__':
                     batch_size,
                     [sample_rat,
                      sample_rat],
-                    3.0, magnitude, 3000,
+                    3.0, magnitude, subset_size,
                     delta,
                     5.67,
                     device_1,
