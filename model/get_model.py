@@ -1,5 +1,7 @@
 from model.CNN import CIFAR10_CNN_Tanh, CIFAR10_CNN_Relu, MNIST_CNN_Relu, MNIST_CNN_Tanh
 from model.RNN import RNN_Tanh, RNN_Relu
+from model.RNN_Theory import sigmod, Tanh
+from model.Group_privacy import ScatterLinear
 import transformers
 
 
@@ -8,8 +10,18 @@ def get_model(algorithm, dataset_name, device):
         print(1)
         if dataset_name == 'MNIST' or dataset_name == 'FMNIST':
             model = MNIST_CNN_Relu(1)
+        elif dataset_name == 'MNIST_MLP_T' or dataset_name == 'FMNIST_MLP_T':
+            model = ScatterLinear(1,(28,28))
+        elif dataset_name == 'MNIST_CNN_T' or dataset_name == 'FMNIST_CNN_T':
+            model = MNIST_CNN_Tanh(1)
         elif dataset_name == 'CIFAR-10':
             model = CIFAR10_CNN_Relu(3)
+        elif dataset_name == 'CIFAR-10_MLP_T':
+            model = ScatterLinear(3,(32,32))
+        elif dataset_name == 'CIFAR-10_CNN_T':
+            model = CIFAR10_CNN_Tanh(3)
+        elif dataset_name == 'IMDB_MLP_T':
+            model = sigmod()
         elif dataset_name == 'IMDB':
             model = RNN_Relu()
     else:
@@ -19,6 +31,8 @@ def get_model(algorithm, dataset_name, device):
             model = CIFAR10_CNN_Tanh(3)
         elif dataset_name == 'IMDB':
             model = RNN_Tanh()
+        elif dataset_name == 'IMDB_T':
+            model = sigmod()
         elif dataset_name == 'CIFAR-10-Transformers':
             # https://github.com/lxuechen/private-transformers
             model_name_or_path = 'google/vit-base-patch16-224'
