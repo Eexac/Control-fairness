@@ -254,7 +254,7 @@ def Fairness_sampling_DPSGD_r(rejection_sampling_rate, estimated_number, start_t
     train_loader = DataLoader(train_data, batch_size=1, shuffle=False)
     train_size = len(train_loader.dataset)
     test_size = len(test_dl.dataset)
-    orders = [1 + x / 10.0 for x in range(1, 100)] + list(range(11, 64)) + [128, 256, 512]
+    orders =  list(range(2, 512)) 
     rdp_list = [0] * len(orders)
     iter = 1
     epsilon = 0.
